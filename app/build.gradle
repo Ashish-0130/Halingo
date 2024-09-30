@@ -1,0 +1,63 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace "com.example.halingo"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.example.halingo"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // AndroidX and Material Design components
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
+    implementation libs.constraintlayout
+
+    // CameraX dependencies for Camera functionality
+    implementation 'androidx.camera:camera-core:1.1.0'
+    implementation 'androidx.camera:camera-lifecycle:1.1.0'
+    implementation 'androidx.camera:camera-view:1.0.0-alpha31'
+
+    // Lifecycle components
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0'
+
+    // CardView and RecyclerView for UI components
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+    // Glide for image loading (Optional)
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // Gson for JSON parsing (Optional)
+    implementation 'com.google.code.gson:gson:2.8.8'
+
+    // Testing dependencies
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+}
